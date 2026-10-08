@@ -23,10 +23,10 @@ func (m IPAMPool) ModelType() attr.Type {
 
 func (m IPAMPool) AttrType() map[string]attr.Type {
 	return map[string]attr.Type{
-		"subnet":      types.StringType,
-		"gateway":     types.StringType,
-		"ip_range":    types.StringType,
-		"aux_address": types.MapType{ElemType: types.StringType},
+		"subnet":        types.StringType,
+		"gateway":       types.StringType,
+		"ip_range":      types.StringType,
+		"aux_addresses": types.MapType{ElemType: types.StringType},
 	}
 }
 

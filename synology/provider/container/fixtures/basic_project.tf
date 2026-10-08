@@ -17,7 +17,7 @@ resource "synology_container_project" "default" {
           subnet   = "10.0.0.0/16"
           gateway  = "10.0.0.1"
           ip_range = "10.0.60.1/28"
-          aux_address = {
+          aux_addresses = {
             host = "10.0.60.2"
           }
         }]

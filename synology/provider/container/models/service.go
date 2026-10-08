@@ -212,9 +212,10 @@ func (m ServiceVolume) AttrType() map[string]attr.Type {
 }
 
 type Ulimit struct {
-	Value types.Int64 `tfsdk:"single"`
-	Soft  types.Int64 `tfsdk:"soft"`
-	Hard  types.Int64 `tfsdk:"hard"`
+	Name  types.String `tfsdk:"name"`
+	Value types.Int64  `tfsdk:"value"`
+	Soft  types.Int64  `tfsdk:"soft"`
+	Hard  types.Int64  `tfsdk:"hard"`
 }
 
 func (m Ulimit) ModelType() attr.Type {
@@ -223,9 +224,10 @@ func (m Ulimit) ModelType() attr.Type {
 
 func (m Ulimit) AttrType() map[string]attr.Type {
 	return map[string]attr.Type{
-		"single": types.Int64Type,
-		"soft":   types.Int64Type,
-		"hard":   types.Int64Type,
+		"name":  types.StringType,
+		"value": types.Int64Type,
+		"soft":  types.Int64Type,
+		"hard":  types.Int64Type,
 	}
 }
 
@@ -322,7 +324,6 @@ func (m Service) ModelType() attr.Type {
 
 func (m Service) AttrType() map[string]attr.Type {
 	return map[string]attr.Type{
-		"name":           types.StringType,
 		"image":          types.StringType,
 		"container_name": types.StringType,
 		"hostname":       types.StringType,
@@ -338,7 +339,7 @@ func (m Service) AttrType() map[string]attr.Type {
 		"userns_mode":    types.StringType,
 		"platform":       types.StringType,
 		"init":           types.BoolType,
-		"ports":          Port{}.ModelType(),
+		"ports":          types.ListType{ElemType: Port{}.ModelType()},
 		"mem_limit":      types.StringType,
 		// "extensions":     types.MapType{ElemType: types.StringType},
 		"depends_on": types.MapType{
