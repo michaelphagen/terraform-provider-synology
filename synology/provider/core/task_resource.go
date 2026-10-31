@@ -323,6 +323,7 @@ func (p *TaskResource) Schema(
 				Optional:            true,
 				Computed:            true,
 				Default:             stringdefault.StaticString(""),
+			},
 			"enable": schema.BoolAttribute{
 				MarkdownDescription: "Whether the task's schedule is enabled in DSM. DSM only " +
 					"writes a crontab row for enabled tasks, so a disabled task never fires " +
